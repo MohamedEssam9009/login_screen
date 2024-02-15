@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_screen/components/components.dart';
 
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
@@ -52,23 +53,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20.0),
-                Container(
-                  width: double.infinity,
-                  height: 40.0,
-                  color: Colors.blue,
-                  child: MaterialButton(
-                    onPressed: () {
-                      print(emailController.text);
-                      print(passwordController.text);
-                    },
-                    child: const Text(
-                      'LOGIN',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
+                defaultButton(text: 'Login', onPressed: () {}),
                 const SizedBox(height: 10.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
