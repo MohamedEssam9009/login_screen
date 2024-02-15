@@ -37,7 +37,7 @@ Widget defaultFormField({
   bool isClickable = true,
   ValueChanged<String>? onSubmit,
   ValueChanged<String>? onChanged,
-  GestureTapCallback? onTap,
+  GestureTapCallback? suffixPressed,
   required FormFieldValidator<String> validate,
 }) =>
     TextFormField(
@@ -50,7 +50,10 @@ Widget defaultFormField({
       decoration: InputDecoration(
         labelText: label,
         prefixIcon: Icon(prefix),
-        suffixIcon: Icon(suffix),
+        suffixIcon: IconButton(
+          onPressed: suffixPressed,
+          icon: Icon(suffix),
+        ),
         border: const OutlineInputBorder(),
       ),
     );

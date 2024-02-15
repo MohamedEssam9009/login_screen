@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:login_screen/components/components.dart';
 
-// ignore: must_be_immutable
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   var emailController = TextEditingController();
+
   var passwordController = TextEditingController();
 
   var formKey = GlobalKey<FormState>();
+
+  bool isPassword = true;
+
+  IconData suffix = Icons.remove_red_eye;
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +58,14 @@ class LoginScreen extends StatelessWidget {
                     type: TextInputType.visiblePassword,
                     label: 'Password',
                     prefix: Icons.lock,
-                    suffix: Icons.remove_red_eye,
-                    isPassword: true,
+                    suffix:
+                        isPassword ? Icons.visibility : Icons.visibility_off,
+                    suffixPressed: () {
+                      setState(() {
+                        isPassword = !isPassword;
+                      });
+                    },
+                    isPassword: isPassword,
                     validate: (value) {
                       if (value!.isEmpty) {
                         return 'Password is too short';
