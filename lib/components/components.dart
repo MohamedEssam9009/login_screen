@@ -26,3 +26,31 @@ Widget defaultButton({
         ),
       ),
     );
+
+Widget defaultFormField({
+  required TextEditingController controller,
+  required TextInputType type,
+  required String label,
+  required IconData prefix,
+  IconData? suffix,
+  bool isPassword = false,
+  bool isClickable = true,
+  ValueChanged<String>? onSubmit,
+  ValueChanged<String>? onChanged,
+  GestureTapCallback? onTap,
+  required FormFieldValidator<String> validate,
+}) =>
+    TextFormField(
+      controller: controller,
+      keyboardType: type,
+      obscureText: isPassword,
+      onFieldSubmitted: onSubmit,
+      onChanged: onChanged,
+      validator: validate,
+      decoration: InputDecoration(
+        labelText: label,
+        prefixIcon: Icon(prefix),
+        suffixIcon: Icon(suffix),
+        border: const OutlineInputBorder(),
+      ),
+    );
